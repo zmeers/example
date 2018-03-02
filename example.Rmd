@@ -1,0 +1,32 @@
+---
+title: "This is an example of a HTML report using USSC themes in ggplot2 as well as USSC fonts in the report itself"
+author: "Zoe Meers"
+output: html_document
+css: ussc_fonts.css
+---
+
+```{r setup}
+library('ussc')
+library('ggplot2')
+ussc_fonts()
+```
+
+# H1 is in Neo Sans Pro
+## H2 is in Univers
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r univers theme and main colour scale, fig.align='center'}
+ggplot(iris, aes(Sepal.Width, Sepal.Length, colour = Species)) + geom_point(size = 4, alpha=0.4) +  theme_ussc_univers() + labs(title="Univers Header", x="Univers Font: Sepal Width", y="Univers Font: Sepal Length", caption = "Based on data from YouGov-USSC") + scale_colour_ussc("main", reverse=TRUE) 
+```
+```{r main ussc theme and blue colour scale, fig.align='center'}
+ggplot(iris, aes(Sepal.Width, Sepal.Length, colour = Species)) + geom_point(size = 4, alpha=0.4) +  theme_ussc() + labs(title="Neo Sans Pro Header", x="Univers Font: Sepal Width", y="Univers Font: Sepal Length", caption = "Based on data from YouGov-USSC") + scale_colour_ussc("blue", reverse=TRUE)
+```
+```{r univers light theme and main colour scale w/o alpha, fig.align='center'}
+ggplot(iris, aes(Sepal.Width, Sepal.Length, colour = Species)) + geom_point(size = 4) +  theme_ussc_univers_light() + labs(title="Univers Header", x="Univers Font: Sepal Width", y="Univers Font: Sepal Length", caption = "Based on data from YouGov-USSC") + scale_colour_ussc("main") 
+```
+```{r neo sans pro light theme and grey colour scale, fig.align='center'}
+ggplot(iris, aes(Sepal.Width, Sepal.Length, colour = Species)) + geom_point(size = 4, alpha=0.7) +  theme_ussc_neosanspro_light() + labs(title="Neo Sans Pro Header", x="NSP Font: Sepal Width", y="NSP Font: Sepal Length", caption = "Based on data from YouGov-USSC") + scale_colour_ussc("grey")
+```
