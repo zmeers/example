@@ -1,1 +1,1 @@
-# example
+# Example of a USSC report template
